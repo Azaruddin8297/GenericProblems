@@ -6,16 +6,29 @@ using System.Threading.Tasks;
 
 namespace GenericProb
 {
-    public class Refactoe
+    public class Refactoe<T> where T : IComparable
     {
-        public static void FindMax<T>(T firstvalue, T secondvalue, T thirdvalue) where T : IComparable
+        public static T FindMax(T FirstNumber, T SecondNumber, T ThirdNumber)
         {
-            if (firstvalue.CompareTo(secondvalue) > 0 && firstvalue.CompareTo(thirdvalue) > 0)
-                Console.WriteLine(firstvalue + " is maximum");
-            if (secondvalue.CompareTo(firstvalue) > 0 && secondvalue.CompareTo(thirdvalue) > 0)
-                Console.WriteLine(secondvalue + " is maximum");
-            if (thirdvalue.CompareTo(secondvalue) > 0 && thirdvalue.CompareTo(firstvalue) > 0)
-                Console.WriteLine(thirdvalue + " is maximum");
+            if (FirstNumber.CompareTo(SecondNumber) > 0 && FirstNumber.CompareTo(ThirdNumber) > 0 ||
+                FirstNumber.CompareTo(SecondNumber) >= 0 && FirstNumber.CompareTo(ThirdNumber) > 0 ||
+                FirstNumber.CompareTo(SecondNumber) > 0 && FirstNumber.CompareTo(ThirdNumber) >= 0)
+            {
+                return FirstNumber;
+            }
+            if (SecondNumber.CompareTo(FirstNumber) > 0 && SecondNumber.CompareTo(ThirdNumber) > 0 ||
+                SecondNumber.CompareTo(FirstNumber) >= 0 && SecondNumber.CompareTo(ThirdNumber) > 0 ||
+                SecondNumber.CompareTo(FirstNumber) > 0 && SecondNumber.CompareTo(ThirdNumber) >= 0)
+            {
+                return SecondNumber;
+            }
+            if (ThirdNumber.CompareTo(SecondNumber) > 0 && ThirdNumber.CompareTo(FirstNumber) > 0 ||
+                ThirdNumber.CompareTo(SecondNumber) >= 0 && ThirdNumber.CompareTo(FirstNumber) > 0 ||
+                ThirdNumber.CompareTo(SecondNumber) > 0 && ThirdNumber.CompareTo(FirstNumber) >= 0)
+            {
+                return ThirdNumber;
+            }
+            return FirstNumber;
         }
     }
 }
